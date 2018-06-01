@@ -1,0 +1,27 @@
+{
+  "name": "electron-react-test",
+  "version": "1.0.0",
+  "description": "electron learning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"start":"electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heartOfblack/electron-react-test.git"
+  },
+  "keywords": [
+    "electron",
+    "heartofblack"
+  ],
+  "author": "heartofblack",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heartOfblack/electron-react-test/issues"
+  },
+  "homepage": "https://github.com/heartOfblack/electron-react-test#readme",
+  "devDependencies": {
+    "electron": "^2.0.2"
+  }
+}
