@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron .",
+    "dev": "electron .",
     "packager": "electron-packager ./ siyuan --x64 --out ./siyuanApp --overwrite --icon=./favicon.ico"
   },
   "repository": {
@@ -24,6 +24,7 @@
   "homepage": "https://github.com/heartOfblack/electron-react-test#readme",
   "devDependencies": {
     "electron": "^2.0.2",
-    "electron-packager": "^12.1.0"
+    "electron-packager": "^12.1.0",
+    "jquery": "^3.3.1"
   }
 }

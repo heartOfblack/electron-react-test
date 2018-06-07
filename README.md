@@ -1,5 +1,12 @@
 ## 学习eletrons
 
+- 文件功能
+
+在主目录下,index.js为package.json中指定的main参数【主进程】，该文件中需要写相关app和browserWindow对象的事件监听和启动事件，并加载一个主页面。
+
+所以最好再新建一个目录专门存放各个页面模块，至于index.html的业务逻辑可以放在根目录下
+
+
 - 线程分类
 
 electron的线程分为主线程和渲染进程，除了package.json中配置的main参数所指定的程序为主线程，其他页面等均为渲染进程。
@@ -10,14 +17,14 @@ electron的线程分为主线程和渲染进程，除了package.json中配置的
 
 在Electron中, GUI 相关的模块 (如 dialog、menu 等) 仅在主进程中可用, 在渲染进程中不可用。 为了在渲染进程中使用它们, ipc 模块是向主进程发送进程间消息所必需的。 使用 remote 模块, 你可以调用 main 进程对象的方法, 而不必显式发送进程间消息, 类似于 Java 的 RMI 。
 例如：从渲染进程创建浏览器窗口
-
+```
 const {BrowserWindow} = require('electron').remote
   let win = new BrowserWindow({width: 800, height: 600})
   win.loadURL('https://github.com')
 Copy
 Note: 相反 (从主进程访问渲染进程), 你可以使用 webContents. executeJavascript 。
 
-
+```
 - 应用分发打包
 
 为了分发应用，我们需要借助一个工具将已经写好的应用程序打包- electron-packager
@@ -75,3 +82,10 @@ npm i -D electron-packager
 - 制作安装包
 
 下载 NSIS 将已经打包好的应用生成安装包即可，具体教程自行google
+
+
+- remote、ipcMain、ipcRenderer模块之间的区别
+
+ipcMain/ipcRenderer 都是属于IPC(主进程通信)功能，主要目的是让主进程和渲染进程进行通信。
+remote模块则是为了让渲染进程能直接调用主进程的模块而不是为了通信。
+所以ipc同样能做remote模块的事，反过来则不一定

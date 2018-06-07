@@ -1,10 +1,57 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		test.html
-	</body>
+
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+
+<body>
+<button id="basic-noti">通知</button>
+<script src="jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+<script>
+	if (!window.Notification)
+      {
+        alert("浏览器不支持通知！");
+      }
+  $(function()
+  {
+
+      if (!window.Notification)
+      {
+        alert("浏览器不支持通知！");
+      }
+      console.log(window.Notification.permission);　　　　　　　　　
+      if (window.Notification.permission != 'granted')
+      {　　
+        Notification.requestPermission(function(status)
+        {
+          //status是授权状态，如果用户允许显示桌面通知，则status为'granted'
+          console.log('status: ' + status);
+          var permission = Notification.permission;
+          console.log('permission: ' + permission);
+        });
+      }
+      var n = new Notification("您有一条消息！", { "icon": "", "body": "您一分钟后将有好运气" });
+      n.onshow = function()
+      {
+        console.log("显示通知");
+        setTimeout(function() { n.close() }, 2000);
+      };
+      n.onclick = function()
+      {
+        alert("打开相关视图");
+        window.open("/Home/about");
+        n.close();
+      };
+      n.onclose = function() { console.log("通知关闭"); };
+      n.onerror = function()
+      {
+        console.log('产生错误');
+      };
+
+  });
+</script>
+</body>
+
 </html>
