@@ -17,7 +17,6 @@ notificationButton.addEventListener('click', function () {
   //   console.log('Notification clicked')
   // }
 
-console.log(process.platform+'1111')
 
   const Notification=require('electron').remote.Notification;
 
