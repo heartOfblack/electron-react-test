@@ -1,38 +1,50 @@
- const electron= require('electron')
- const  {clipboard,dialog}=electron.remote
-const $=require('jquery')
-const path=require('path')
-const ipcRenderer=electron.ipcRenderer
-//  除了主进程，所有的页面都是渲染进程的内容，渲染进程内容不允许调用主进程的涉及GUI的API，所以需要通过remote作为中间件
-// 可以当它是一个引用。dialog，menu等都是主进程的API
+// window.notification
+// const notification = {
+//   title: '基本通知',
+//   body: '短消息部分'
+// }
+const $=require('jquery');
+const {shell,process} =require('electron').remote;
+const path=require('path');
 
 
-document.querySelector('#copy').addEventListener('click',function(){
-clipboard.writeText('成功复制链接');
+const notificationButton = document.getElementById('basic-noti')
 
- // dialog.showMessageBox({title:'复制提醒',message:'复制成功'})
+notificationButton.addEventListener('click', function () {
+  // const myNotification = new window.Notification(notification.title, notification)
 
-ipcRenderer.send('showDialog')
+  // myNotification.onclick = () => {
+  //   console.log('Notification clicked')
+  // }
 
+console.log(process.platform+'1111')
+
+  const Notification=require('electron').remote.Notification;
+
+  Notification.isSupported()&&(function(){
+  
+    new Notification({
+    title:'OS通知',
+    body:'您有N条未读消息'
+    
+    }).show()
+    
+     })()
+})
+
+console.log(__dirname);
+$('#openUrl').on('click',()=>{
+console.log('open');
+ //shell.openExternal('http://www.baidu.com')
+
+ shell.openItem(path.join(__dirname,'/直播.png'))
 
 })
 
 
-$('#save').on('click',()=>{
- // dialog.showOpenDialog({properties: ['openFile', 'openDirectory', 'multiSelections']})
-// dialog.showSaveDialog({title:'保存对话框',defaultPath:'D:/path/',message:'保存对话框内容'})
-  
-// const modalPath = path.join('file://', __dirname, '../../sections/windows/modal.html')
-// console.log(modalPath);
-const notification = {
-  title: '基本通知',
-  body: '短消息部分'
-}
-  const myNotification = new window.Notification(notification.title, notification)
+$('#clear').on('click',()=>{
 
-  myNotification.onclick = () => {
-    console.log('Notification clicked')
-  }
+  shell.moveItemToTrash(path.join(__dirname+'/test.html'))
 
 })
 

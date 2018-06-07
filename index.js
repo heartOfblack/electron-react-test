@@ -1,7 +1,11 @@
-const {app, BrowserWindow,globalShortcut,dialog,clipboard,crashReporter,ipcMain} = require('electron')
+const {app,Notification, BrowserWindow,globalShortcut,dialog,clipboard,crashReporter,ipcMain} = require('electron')
 
   
-  function createWindow () {   
+  function createWindow () { 
+    
+    
+
+
     // 创建浏览器窗口
     win = new BrowserWindow({images:'favicon.ico' ,width: 800, height: 600})
 //子窗口永远在父窗口之前
@@ -11,21 +15,35 @@ const {app, BrowserWindow,globalShortcut,dialog,clipboard,crashReporter,ipcMain}
  
 
   	/*快捷键*/
-  	globalShortcut.register('CommandOrControl+T',()=>{
-  		
+  	globalShortcut.register('CommandOrControl+T',()=>{  		
       console.log('control+T');
-
-      
-  		
     })
+
+// 通知
+//  Notification.isSupported()&&(function(){
+
+// new Notification({
+// title:'OS通知',
+// body:'您有N条未读消息'
+
+// }).show()
+
+//  })()
+
+//new Notification({'title':'title',body:'message'}).show()
+
+
     
 
     ipcMain.on('showDialog',(e)=>{
-
       dialog.showMessageBox({title:'IPC通信弹窗',message:'IPC通信弹窗'})
-
-
     })
+
+
+
+
+
+
 
 
   	// 窗口关闭前提示

@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/heartOfblack/electron-react-test#readme",
   "devDependencies": {
+    "axios": "^0.18.0",
     "electron": "^2.0.2",
     "electron-packager": "^12.1.0",
     "jquery": "^3.3.1"
