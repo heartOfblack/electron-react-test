@@ -40,13 +40,14 @@ npm i -D electron-packager
   }
 
   将packager配置在scripts里面，里面相关的参数可以看
-  ![https://github.com/electron-userland/electron-packager]
+  [https://github.com/electron-userland/electron-packager](https://github.com/electron-userland/electron-packager)
 
 简单参数：
   electron-packager <sourcedir> <appname> --platform=<platform> --arch=<arch> [optional flags...]
 
 
   个人项目目录:
+  
   electron-react-test
                |--package.json
                |--index.js
@@ -154,7 +155,7 @@ ipc.on('synchronous-message', function (event, arg) {
 >关于主进程和渲染进程内容的区分，我个人认为index.js的之外都属于渲染进程的内容，包括所有的页面，所以除了index.js之外，所有的js文件中只能通过remote模块调用主进程内容或者通过IPC通信方式，让主进程去处理任务
 
 
-- ### notification 关于操作系统级别和浏览器级别的通知
+- ### notification 关于操作系统级别的通知
 
 目前，Notification模块只能在主进程中运行，如果要在渲染进程中通知，可以使用H5的原生API或者通过remote模块调用，不过该调用方式仍然在主进程处理，两种区别如下
 

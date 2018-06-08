@@ -1,4 +1,4 @@
-const {app,Notification, BrowserWindow,globalShortcut,dialog,clipboard,crashReporter,ipcMain} = require('electron')
+const {app,webContents,Notification, BrowserWindow,globalShortcut,dialog,clipboard,crashReporter,ipcMain} = require('electron')
 
   
   function createWindow () { 
@@ -86,6 +86,8 @@ const {app,Notification, BrowserWindow,globalShortcut,dialog,clipboard,crashRepo
     // 然后加载应用的 index.html。
       win.loadFile('index.html');
 
+
+ 
      
 
     win.webContents.openDevTools()//调试工具
