@@ -47,16 +47,16 @@ npm i -D electron-packager
 
 
   个人项目目录:
-  
+  ```
   electron-react-test
                |--package.json
                |--index.js
                |--index.html
-
+```
     所以打包的配置文件中是以当前目录打包 ./   ,打包的应用名(exe)为 siyuan ，输出目录为当前目录的siyuanApp文件夹 并重写了应用的icon
 
     最终打包后的目录为
-
+```
       electron-react-test
                |--package.json
                |--index.js
@@ -69,7 +69,7 @@ npm i -D electron-packager
                                     |--electron asar
                              |--各种dll文件
 
-
+```
 - ### 应用程序打包
 
 为了防止用户直接看到源码，需要将应用分发后生成的  app目录【上述electron-packager打包后生成的目录中，在resources文件夹下存放了一个名为app的文件夹，里面就是我们的源代码】
